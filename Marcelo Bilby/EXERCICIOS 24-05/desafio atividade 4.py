@@ -5,11 +5,6 @@ import pandas as pd
 # from prompt_toolkit import formatted_text
 from IPython.display import display
 
-def retornaValorReal(valor):
-    valor = f'{valor:_.2f}'
-    valor = valor.replace('_', '.')
-    return valor
-
 
 # DATAFRAME
 
@@ -29,14 +24,16 @@ percentual = percentual * 100
 
 print(f"O percentual de funcionários que fecharam contrato é de: {percentual:.2f} %")
 print("")
-print("Lista de funcionários que não fecharam contrato: ")
+print("Lista de funcionários que fecharam contrato por área: ")
 
 totalFuncionarios = funcionarios_df["ID Funcionário"].unique()
 totalContratos = servicos_df["ID Funcionário"].unique()
 
-naoFecharamContrato = funcionarios_df.loc[~funcionarios_df["ID Funcionário"].isin(servicos_df["ID Funcionário"])].reset_index(drop=True)
+contratos = funcionarios_df.loc[funcionarios_df["ID Funcionário"].isin(servicos_df["ID Funcionário"])].reset_index(drop=True)
 
 
-display(naoFecharamContrato)
+contratos = contratos["Area"].value_counts()
+
+display(contratos)
 
 
