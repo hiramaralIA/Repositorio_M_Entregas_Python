@@ -36,4 +36,13 @@ contratos = contratos["Area"].value_counts()
 
 display(contratos)
 
+print("Média mensal dos contratos: ")
+
+faturamento_df =  clientes_df.merge(servicos_df, on="ID Cliente")
+faturamento_df["Faturamento Total"] = faturamento_df["Valor Contrato Mensal"] * faturamento_df["Tempo Total de Contrato (Meses)"]
+faturamento_df = faturamento_df["Faturamento Total"].sum() / faturamento_df["Tempo Total de Contrato (Meses)"].mean()
+mediaMensal = f"{faturamento_df:_.2f}"
+mediaMensal = mediaMensal.replace("_", ".")
+display(mediaMensal)
+
 

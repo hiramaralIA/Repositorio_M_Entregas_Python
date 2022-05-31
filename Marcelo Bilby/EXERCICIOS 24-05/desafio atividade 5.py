@@ -21,3 +21,16 @@ funcionariosPorArea = funcionarios_df["Area"].value_counts()
 display(funcionariosPorArea)
 
 
+# CALCULE A REMUNERAÇÃO DOS FUNCIONÁRIOS INCLUINDO VT E VR
+
+funcionarios_df["Remuneracao"] = (funcionarios_df["Salario Base"] + funcionarios_df["Beneficios"] + funcionarios_df["VT"] + funcionarios_df["VR"]) - funcionarios_df["Impostos"]
+
+remuneracao = funcionarios_df["Remuneracao"]
+display(remuneracao)
+
+
+
+
+
+
+
